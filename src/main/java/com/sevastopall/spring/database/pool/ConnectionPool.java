@@ -6,11 +6,10 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.util.List;
-import java.util.Map;
 
-@Component(value = "pool1")
+@Component("pool1")
 public class ConnectionPool {
+
     private final String username;
     private final Integer poolSize;
 
