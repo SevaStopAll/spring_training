@@ -4,18 +4,14 @@ import com.sevastopall.spring.database.repository.CompanyRepository;
 import com.sevastopall.spring.database.repository.CrudRepository;
 import com.sevastopall.spring.database.repository.UserRepository;
 import com.sevastopall.spring.entity.Company;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
     private final CrudRepository<Integer, Company> companyRepository;
-
-    public UserService(UserRepository userRepository,
-                       CrudRepository<Integer, Company> companyRepository) {
-        this.userRepository = userRepository;
-        this.companyRepository = companyRepository;
-    }
 
 }
