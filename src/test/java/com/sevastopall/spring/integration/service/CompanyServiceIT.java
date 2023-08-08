@@ -21,17 +21,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CompanyServiceIT {
 
     private static final Integer COMPANY_ID = 1;
-    @Autowired
+
     private final CompanyService companyService;
 
-    @Autowired
     private final DatabaseProperties databaseProperties;
 
     @Test
     void findById() {
-
         Optional<CompanyReadDto> actualResult = companyService.findById(COMPANY_ID);
+
         assertTrue(actualResult.isPresent());
+
         CompanyReadDto expectedResult = new CompanyReadDto(COMPANY_ID);
         actualResult.ifPresent(actual ->  assertEquals(expectedResult, actual));
     }
