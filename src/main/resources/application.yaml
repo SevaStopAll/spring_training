@@ -20,5 +20,23 @@ db:
     - size: 3
     - timeout: 3
 
-  spring.profiles.active: qa
+spring.profiles.active: qa
+
+logging:
+  level:
+    root: info
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+jpa:
+  properties_hibernate:
+    show_sql: true
+    format_sql: true
+    hbm2ddl.auto: validate
+
+
 
