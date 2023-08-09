@@ -1,6 +1,6 @@
 package com.sevastopall.spring.service;
 
-import com.sevastopall.spring.database.repository.CrudRepository;
+import com.sevastopall.spring.database.repository.CompanyRepository;
 import com.sevastopall.spring.dto.CompanyReadDto;
 import com.sevastopall.spring.entity.Company;
 import com.sevastopall.spring.listener.entity.EntityEvent;
@@ -23,7 +23,7 @@ class CompanyServiceTest {
     private static final Integer COMPANY_ID = 1;
 
     @Mock
-    private CrudRepository<Integer, Company> companyRepository;
+    private CompanyRepository companyRepository;
     @Mock
     private UserService userService;
     @Mock
