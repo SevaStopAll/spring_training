@@ -1,9 +1,6 @@
 package com.sevastopall.spring.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -11,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@ToString(exclude = "userChats")
+@EqualsAndHashCode(of = "username")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -26,9 +25,9 @@ public class User implements BaseEntity<Long> {
 
     private LocalDate birthDate;
 
-    private String firstName;
+    private String firstname;
 
-    private String lastName;
+    private String lastname;
 
     @Enumerated(EnumType.STRING)
     private Role role;
