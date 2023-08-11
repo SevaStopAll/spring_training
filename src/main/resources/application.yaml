@@ -22,6 +22,10 @@ db:
 
 #spring.profiles.active: qa
 
+
+logging:
+  level:
+    root: INFO
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5433/postgres
@@ -30,8 +34,8 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     properties.hibernate:
-      show-sql: true
-      format-sql: true
+      show_sql: true
+      format_sql: true
       hbm2ddl.auto: validate
 
 

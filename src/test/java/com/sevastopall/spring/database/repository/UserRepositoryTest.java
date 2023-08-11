@@ -2,6 +2,7 @@ package com.sevastopall.spring.database.repository;
 
 import com.sevastopall.spring.dto.PersonalInfo;
 import com.sevastopall.spring.dto.PersonalInfo2;
+import com.sevastopall.spring.dto.UserFilter;
 import com.sevastopall.spring.entity.Role;
 import com.sevastopall.spring.entity.User;
 import com.sevastopall.spring.integration.annotation.IT;
@@ -91,5 +92,14 @@ class UserRepositoryTest {
         List<PersonalInfo2> users = userRepository.findAllByCompanyId(1);
         org.assertj.core.api.Assertions.assertThat(users).hasSize(2);
          System.out.println();
+    }
+
+    @Test
+    void checkCustomImplementation() {
+        UserFilter filter = new UserFilter(
+                null, "%ov%", LocalDate.now()
+        );
+        List<User> users = userRepository.findAllByFilter(filter);
+        System.out.println();
     }
 }
