@@ -1,5 +1,7 @@
 package com.sevastopall.spring.database.repository;
 
+import com.sevastopall.spring.dto.PersonalInfo;
+import com.sevastopall.spring.dto.PersonalInfo2;
 import com.sevastopall.spring.entity.Role;
 import com.sevastopall.spring.entity.User;
 import com.sevastopall.spring.integration.annotation.IT;
@@ -82,5 +84,12 @@ class UserRepositoryTest {
             slice.forEach(user -> System.out.println(user.getCompany().getName()));
         }
         /*org.assertj.core.api.Assertions.assertThat(slice).hasSize(2);*/
+    }
+
+    @Test
+    void checkProjections() {
+        List<PersonalInfo2> users = userRepository.findAllByCompanyId(1);
+        org.assertj.core.api.Assertions.assertThat(users).hasSize(2);
+         System.out.println();
     }
 }

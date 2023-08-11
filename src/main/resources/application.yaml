@@ -20,11 +20,7 @@ db:
     - size: 3
     - timeout: 3
 
-spring.profiles.active: qa
-
-logging:
-  level:
-    root: info
+#spring.profiles.active: qa
 
 spring:
   datasource:
@@ -32,11 +28,11 @@ spring:
     username: postgres
     password: password
     driver-class-name: org.postgresql.Driver
-jpa:
-  properties_hibernate:
-    show_sql: true
-    format_sql: true
-    hbm2ddl.auto: validate
+  jpa:
+    properties.hibernate:
+      show-sql: true
+      format-sql: true
+      hbm2ddl.auto: validate
 
 
 
