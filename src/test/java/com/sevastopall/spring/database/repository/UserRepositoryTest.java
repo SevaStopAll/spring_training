@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -35,7 +36,7 @@ class UserRepositoryTest {
     @Test
     void checkQueries() {
         List<User> users = userRepository.findAllBy("a","ov");
-        org.assertj.core.api.Assertions.assertThat(users).hasSize(3);
+        assertThat(users).hasSize(3);
     }
 
     @Test
@@ -60,7 +61,7 @@ class UserRepositoryTest {
     @Test
     void checkTop3() {
         List<User> allUsers = userRepository.findTop3ByBirthDateBefore(LocalDate.now(), Sort.by("id").descending());
-        org.assertj.core.api.Assertions.assertThat(allUsers).hasSize(3);
+        assertThat(allUsers).hasSize(3);
     }
 
     @Test
@@ -68,7 +69,7 @@ class UserRepositoryTest {
         Sort.TypedSort<User> sortBy = Sort.sort(User.class);
         Sort sortByNames = sortBy.by(User::getFirstname).and(sortBy.by(User::getLastname));
         List<User> allUsers = userRepository.findTop3ByBirthDateBefore(LocalDate.now(), sortByNames.descending());
-        org.assertj.core.api.Assertions.assertThat(allUsers).hasSize(3);
+        assertThat(allUsers).hasSize(3);
     }
 
     @Test
@@ -99,16 +100,16 @@ class UserRepositoryTest {
     @Test
     void checkProjections() {
         List<PersonalInfo2> users = userRepository.findAllByCompanyId(1);
-        org.assertj.core.api.Assertions.assertThat(users).hasSize(2);
+        assertThat(users).hasSize(2);
          System.out.println();
     }
 
     @Test
     void checkCustomImplementation() {
         UserFilter filter = new UserFilter(
-                null, "%ov%", LocalDate.now()
+                null, "ov", LocalDate.now()
         );
         List<User> users = userRepository.findAllByFilter(filter);
-        System.out.println();
+        assertThat(users).hasSize(4);
     }
 }
