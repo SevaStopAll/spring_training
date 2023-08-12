@@ -1,6 +1,5 @@
 package com.sevastopall.spring.database.repository;
 
-import com.sevastopall.spring.dto.PersonalInfo;
 import com.sevastopall.spring.dto.PersonalInfo2;
 import com.sevastopall.spring.dto.UserFilter;
 import com.sevastopall.spring.entity.Role;
@@ -9,6 +8,7 @@ import com.sevastopall.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.*;
+import org.springframework.test.annotation.Commit;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,6 +22,15 @@ import static org.junit.jupiter.api.Assertions.*;
 @RequiredArgsConstructor
 class UserRepositoryTest {
     private final UserRepository userRepository;
+
+    @Test
+    @Commit
+    void checkAuditing() {
+        User ivan = userRepository.findById(1L).get();
+        ivan.setBirthDate(ivan.getBirthDate().plusYears(1));
+        userRepository.flush();
+        System.out.println();
+    }
 
     @Test
     void checkQueries() {
