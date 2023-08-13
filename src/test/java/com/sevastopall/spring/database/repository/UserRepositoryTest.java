@@ -1,5 +1,6 @@
 package com.sevastopall.spring.database.repository;
 
+import com.sevastopall.spring.dto.PersonalInfo;
 import com.sevastopall.spring.dto.PersonalInfo2;
 import com.sevastopall.spring.dto.UserFilter;
 import com.sevastopall.spring.entity.Role;
@@ -111,5 +112,18 @@ class UserRepositoryTest {
         );
         List<User> users = userRepository.findAllByFilter(filter);
         assertThat(users).hasSize(4);
+    }
+
+    @Test
+    void checkJdbcTemplate() {
+        List<PersonalInfo> users = userRepository.findAllByCompanyIdAndRole(1, Role.USER);
+        assertThat(users).hasSize(1);
+    }
+
+    @Test
+    void checkBatch() {
+        List<User> users = userRepository.findAll();
+        userRepository.updateCompanyAndRoleNamed(users);
+        System.out.println();
     }
 }
