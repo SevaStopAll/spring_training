@@ -42,7 +42,7 @@ VALUES (100, (SELECT id FROM users WHERE username = 'ivan@gmail.com')),
 INSERT INTO chat (name)
 VALUES ('dmdev'),
        ('java'),
-       ('database');
+       ('db.changelog');
 
 INSERT INTO users_chat(user_id, chat_id)
 VALUES ((SELECT id FROM users WHERE username = 'ivan@gmail.com'), (SELECT id FROM chat WHERE name = 'dmdev')),
@@ -52,5 +52,5 @@ VALUES ((SELECT id FROM users WHERE username = 'ivan@gmail.com'), (SELECT id FRO
        ((SELECT id FROM users WHERE username = 'sveta@gmail.com'), (SELECT id FROM chat WHERE name = 'java')),
        ((SELECT id FROM users WHERE username = 'vlad@gmail.com'), (SELECT id FROM chat WHERE name = 'java')),
        ((SELECT id FROM users WHERE username = 'kate@gmail.com'), (SELECT id FROM chat WHERE name = 'java')),
-       ((SELECT id FROM users WHERE username = 'petr@gmail.com'), (SELECT id FROM chat WHERE name = 'database')),
-       ((SELECT id FROM users WHERE username = 'kate@gmail.com'), (SELECT id FROM chat WHERE name = 'database'));
+       ((SELECT id FROM users WHERE username = 'petr@gmail.com'), (SELECT id FROM chat WHERE name = 'db.changelog')),
+       ((SELECT id FROM users WHERE username = 'kate@gmail.com'), (SELECT id FROM chat WHERE name = 'db.changelog'));
