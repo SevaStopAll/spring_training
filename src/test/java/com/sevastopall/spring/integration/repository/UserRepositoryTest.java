@@ -1,15 +1,15 @@
-package com.sevastopall.spring.database.repository;
+package com.sevastopall.spring.integration.repository;
 
+import com.sevastopall.spring.database.repository.UserRepository;
 import com.sevastopall.spring.dto.PersonalInfo;
 import com.sevastopall.spring.dto.PersonalInfo2;
 import com.sevastopall.spring.dto.UserFilter;
 import com.sevastopall.spring.entity.Role;
 import com.sevastopall.spring.entity.User;
-import com.sevastopall.spring.integration.annotation.IT;
+import com.sevastopall.spring.integration.IntegrationTestBase;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.*;
-import org.springframework.test.annotation.Commit;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,13 +20,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-@IT
+
 @RequiredArgsConstructor
-class UserRepositoryTest {
+class UserRepositoryTest extends IntegrationTestBase {
     private final UserRepository userRepository;
 
     @Test
-    @Commit
+    /*@Commit*/
     void checkAuditing() {
         User ivan = userRepository.findById(1L).get();
         ivan.setBirthDate(ivan.getBirthDate().plusYears(1));
