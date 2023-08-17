@@ -23,4 +23,6 @@ public abstract class IntegrationTestBase {
     static void postgresProperties(DynamicPropertyRegistry registry) {
         registry.add("spring.datasource.url", container::getJdbcUrl);
     }
+
+
 }
