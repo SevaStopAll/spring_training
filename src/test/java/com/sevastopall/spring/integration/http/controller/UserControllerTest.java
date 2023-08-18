@@ -25,7 +25,6 @@ class UserControllerTest extends IntegrationTestBase {
                 .andExpect(view().name("user/users"))
                 .andExpect(model().attributeExists("users"));
     }
-
     @Test
     void create() throws Exception {
         mockMvc.perform(post("/users")
@@ -34,7 +33,7 @@ class UserControllerTest extends IntegrationTestBase {
                 .param(lastname, "TestTest")
                 .param(role, "ADMIN")
                 .param(companyId, "1")
-                        /*.param(birthDate, "2000-01-01")*/
+                .param(birthDate, "2000-01-01")
         )
                 .andExpectAll(
                         status().is3xxRedirection(),
