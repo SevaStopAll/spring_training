@@ -15,6 +15,10 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    main.java.srcDirs += "$buildDir/generated/sources/annotationProcessor/java/main"
+}
+
 configurations {
     querydsl.extendsFrom annotationProcessor, implementation, compileOnly, runtimeOnly
 }
@@ -44,6 +48,7 @@ querydsl {
     library = "com.querydsl:querydsl-apt:${versions.querydsl}"
     querydslSourcesDir = "$buildDir/generated/sources/annotationProcessor/java/main"
 }
+initQuerydslSourcesDir.dependsOn clean
 
 compileQuerydsl {
     options.annotationProcessorPath = configurations.querydsl
