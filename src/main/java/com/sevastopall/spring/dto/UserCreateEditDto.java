@@ -1,8 +1,12 @@
 package com.sevastopall.spring.dto;
 
 import com.sevastopall.spring.entity.Role;
+import com.sevastopall.spring.validation.UserInfo;
+import com.sevastopall.spring.validation.group.CreateAction;
+import com.sevastopall.spring.validation.group.UpdateAction;
 import lombok.Value;
 import lombok.experimental.FieldNameConstants;
+import org.postgresql.util.LruCache;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Email;
@@ -13,6 +17,7 @@ import java.time.LocalDate;
 
 @Value
 @FieldNameConstants
+@UserInfo(groups = UpdateAction.class)
 public class UserCreateEditDto {
     @Email
     String username;
@@ -20,11 +25,9 @@ public class UserCreateEditDto {
 /*    @DateTimeFormat(pattern = "yyyy-MM-dd")*/
     LocalDate birthDate;
 
-    @NotBlank
-            @Size(min = 3, max = 64)
+    @Size(min = 3, max = 64)
     String firstname;
 
-    @NotBlank
     String lastname;
 
     @NotNull
