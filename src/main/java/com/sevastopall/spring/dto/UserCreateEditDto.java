@@ -8,6 +8,7 @@ import lombok.Value;
 import lombok.experimental.FieldNameConstants;
 import org.postgresql.util.LruCache;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -35,4 +36,6 @@ public class UserCreateEditDto {
 
     @NotNull
     Integer companyId;
+
+    MultipartFile image;
 }
