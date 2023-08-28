@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import static com.sevastopall.spring.entity.Role.*;
+
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
@@ -18,7 +20,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeHttpRequests(
                         urlConfig -> urlConfig
-                                .antMatchers("/admin/**").hasAuthority(Role.ADMIN.getAuthority())
+                                .antMatchers("/login", "/users/registration", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
+                                .antMatchers("/users/{\\d}/delete").hasAuthority(ADMIN.getAuthority())
+                                .antMatchers("/admin/**").hasAuthority(ADMIN.getAuthority())
                                 .anyRequest().authenticated()
                 )
                 /*.httpBasic(Customizer.withDefaults());*/
